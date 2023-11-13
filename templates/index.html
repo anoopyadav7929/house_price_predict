@@ -66,6 +66,19 @@
         function send_data() {
             document.querySelector("form").addEventListener("submit", form_handler);
             var fd = new FormData(document.querySelector("form"));
+
+            // Check if all fields are filled, not negative, and sqft is greater than 200
+            for (var [key, value] of fd.entries()) {
+                if (value == '' || value < 0) {
+                    document.getElementById("prediction").innerHTML = "Please enter valid data";
+                    return;
+                }
+                if (key == 'total_sqft' && value <= 220) {
+                    document.getElementById("prediction").innerHTML = "Sqft size too small";
+                    return;
+                }
+            }
+
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "/predict", true);
             document.getElementById("prediction").innerHTML = "please wait";
