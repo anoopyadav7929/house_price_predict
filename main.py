@@ -2,6 +2,8 @@ from flask import Flask , render_template , request
 import pandas as pd
 import pickle
 import numpy as np
+import webbrowser
+from threading import Timer
 
 app = Flask(__name__)
 data = pd.read_csv("Cleaned_Data.csv")
@@ -28,6 +30,10 @@ def predict():
         return "---Invalid data"
     else:
         return str(np.round(prediction , 2))
+
+if __name__ == "__main__":
+    Timer(1, lambda: webbrowser.open("http://127.0.0.1:5001")).start()
+    app.run(port=5001)
 
 if __name__=="__main__":
     app.run(debug=True , port=5001)

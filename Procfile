@@ -1,1 +1,0 @@
-web: gunicorn main.py:House price predictor
