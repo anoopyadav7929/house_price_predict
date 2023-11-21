@@ -2,7 +2,7 @@
 
 Run the main.py file, and it will automatically open the web app in your browser.
 
-This is how the app looks: 
+This is how the web app looks: 
 ![img.png](img.png)
 
 
